@@ -139,6 +139,9 @@ var DateTimePickerTime = createClass({
 	},
 
 	componentWillReceiveProps: function( nextProps ) {
+		['hours', 'minutes', 'seconds', 'milliseconds'].forEach( function( type ) {
+			assign(this.timeConstraints[ type ], nextProps.timeConstraints[ type ]);
+		}, this);
 		this.setState( this.calculateState( nextProps ) );
 	},
 
